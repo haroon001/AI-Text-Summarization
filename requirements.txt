@@ -1,2 +1,5 @@
 nltk
 rogue
+einops
+deepspeed
+py-cpuinfo
