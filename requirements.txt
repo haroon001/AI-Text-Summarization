@@ -3,3 +3,6 @@ rogue
 einops
 deepspeed
 py-cpuinfo
+pytorch
+transformers==4.35.2
+sentencepiece
