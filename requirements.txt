@@ -4,5 +4,5 @@ einops
 deepspeed
 py-cpuinfo
 pytorch
-transformers==4.35.2
+transformers==4.41.2
 sentencepiece
