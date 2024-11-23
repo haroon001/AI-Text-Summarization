@@ -91,6 +91,7 @@ model = AutoModelForSeq2SeqLM.from_pretrained(
     model_id,
     trust_remote_code=True,
     early_stopping=False,
+	cache_dir="/scratch0/zamojci1/"
 ).bfloat16()
 
 # load tokenizer
