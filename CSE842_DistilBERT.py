@@ -117,7 +117,7 @@ def download_dataset():
     # data_path = "./wikihow-cleaned.csv"
     # df = pd.read_csv(data_path)
     dataset = load_dataset("gursi26/wikihow-cleaned")["train"]
-    dataset = Dataset.from_pandas(df)
+    # dataset = Dataset.from_pandas(df)
     return dataset
 
 # load dataset
