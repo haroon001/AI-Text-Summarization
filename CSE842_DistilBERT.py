@@ -27,7 +27,7 @@ from rouge import Rouge
 nltk.download('punkt')
 nltk.download('punkt_tab')
 
-
+os.environ["CUDA_VISIBLE_DEVICES"] = "7"
 
 def calculate_rouge(reference, hypothesis):
     """
