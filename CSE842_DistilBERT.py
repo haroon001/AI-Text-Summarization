@@ -211,7 +211,7 @@ training_args = Seq2SeqTrainingArguments(
     save_total_limit=2,
     use_cpu=False,
     eval_strategy='epoch',
-    num_train_epochs=5,
+    num_train_epochs=3,
     per_device_train_batch_size=batch_size,
     per_device_eval_batch_size=batch_size,
     predict_with_generate=True,
@@ -238,7 +238,7 @@ Train model.
 """
 os.environ["WANDB_DISABLED"] = "true"
 training_results = trainer.train()
-
+print(training_results)
 
 # In[ ]:
 
@@ -247,7 +247,7 @@ training_results = trainer.train()
 Evaluate model.
 """
 testing_results = trainer.evaluate(tokenized_datasets['test'])
-
+print(testing_results)
 
 # In[ ]:
 
