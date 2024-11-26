@@ -26,6 +26,7 @@ from rouge import Rouge
 
 nltk.download('punkt')
 nltk.download('punkt_tab')
+meteor = evaluate.load("meteor")
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "7"
 
@@ -44,6 +45,23 @@ def calculate_rouge(reference, hypothesis):
         'rouge-2': scores[0]['rouge-2']['f'],
         'rouge-l': scores[0]['rouge-l']['f']
     }
+
+def calculate_meteor(decoded_labels, decoded_preds):
+    """
+    Calculate the METEOR score for a given predictions and labels.
+    
+    :param decoded_preds (list): Decoded predictions of model. 
+    :param decoded_labels (list): Decoded or original labels.
+    :return (float): The METEOR score
+    """
+    try:
+        meteor_result = meteor.compute(predictions=decoded_preds, references=decoded_labels)
+        
+    except Exception as e:
+        print(f"Warning: Error computing METEOR score: {str(e)}")
+        meteor_result = 0.0
+
+    return meteor_result
 
 def calculate_bleu(reference, hypothesis):
     """
@@ -68,11 +86,13 @@ def evaluate_summary(reference, hypothesis):
     :return (float): A dictionary containing ROUGE and BLEU scores
     """
     rouge_scores = calculate_rouge(reference, hypothesis)
-    bleu_score = calculate_bleu(reference, hypothesis)
+    # bleu_score = calculate_bleu(reference, hypothesis)
+	meteor_scores = calculate_meteor(reference, hypothesis)
 
     return {
         'rouge': rouge_scores,
-        'bleu': bleu_score
+		'meteor': meteor_scores,
+        # 'bleu': bleu_score
     }
 
 """
@@ -83,8 +103,8 @@ set_seed(777)
 
 output_path = "./checkpoints"
 
-model_id = "sshleifer/distilbart-xsum-12-3"
-# model_id = os.path.join(output_path, "checkpoint-30084")
+# model_id = "sshleifer/distilbart-xsum-12-3"
+model_id = os.path.join(output_path, "checkpoint-20056")
 
 # load model
 model = AutoModelForSeq2SeqLM.from_pretrained(
@@ -188,10 +208,11 @@ def compute_metrics(eval_preds):
     labels_decoded = tokenizer.batch_decode(labels, skip_special_tokens=True)
 
     # calculate rouge scores
-    rouge_scores = calculate_rouge(labels_decoded, preds_decoded)
+    # rouge_scores = calculate_rouge(labels_decoded, preds_decoded)
+	scores = evaluate_summary(labels_decoded, preds_decoded)
 
     # return metrics
-    return rouge_scores
+    return scores
 
 
 # In[9]:
@@ -237,8 +258,8 @@ trainer = Seq2SeqTrainer(
 Train model.
 """
 os.environ["WANDB_DISABLED"] = "true"
-training_results = trainer.train()
-print(training_results)
+# training_results = trainer.train()
+# print(training_results)
 
 # In[ ]:
 
