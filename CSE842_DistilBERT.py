@@ -4,6 +4,7 @@ import transformers
 import sys
 import os
 import nltk
+import evaluate
 import numpy as np
 import pandas as pd
 from datasets import load_dataset, Dataset, DatasetDict
@@ -23,6 +24,7 @@ from transformers import (
 from transformers.trainer_utils import get_last_checkpoint
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from rouge import Rouge
+
 
 nltk.download('punkt')
 nltk.download('punkt_tab')
@@ -78,22 +80,21 @@ def calculate_bleu(reference, hypothesis):
     return sentence_bleu(reference_tokens, hypothesis_tokens, smoothing_function=sf.method1)
 
 def evaluate_summary(reference, hypothesis):
-    """
-    Evaluate a generated summary using both ROUGE and BLEU metrics.
+	"""
+	Evaluate a generated summary using both ROUGE and BLEU metrics.
 
-    :param reference (str): The reference (ground truth) summary
-    :param hypothesis (str): The generated summary to evaluate
-    :return (float): A dictionary containing ROUGE and BLEU scores
-    """
-    rouge_scores = calculate_rouge(reference, hypothesis)
-    # bleu_score = calculate_bleu(reference, hypothesis)
+	:param reference (str): The reference (ground truth) summary
+	:param hypothesis (str): The generated summary to evaluate
+	:return (float): A dictionary containing ROUGE and BLEU scores
+	"""
+	rouge_scores = calculate_rouge(reference, hypothesis)
+	# bleu_score = calculate_bleu(reference, hypothesis)
 	meteor_scores = calculate_meteor(reference, hypothesis)
-
-    return {
-        'rouge': rouge_scores,
+	return {
+		'rouge': rouge_scores,
 		'meteor': meteor_scores,
-        # 'bleu': bleu_score
-    }
+		# 'bleu': bleu_score
+	}
 
 """
 Load model and tokenizer.
@@ -199,20 +200,20 @@ tokenized_datasets = dataset.map(preprocess_function, batched=True)
 Evaluation metrics.
 """
 def compute_metrics(eval_preds):
-    # prepare prediction data
-    labels, preds = eval_preds.label_ids, eval_preds.predictions
-    labels[labels == -100] = tokenizer.pad_token_id
+	# prepare prediction data
+	labels, preds = eval_preds.label_ids, eval_preds.predictions
+	labels[labels == -100] = tokenizer.pad_token_id
 
-    # decode
-    preds_decoded = tokenizer.batch_decode(preds, skip_special_tokens=True)
-    labels_decoded = tokenizer.batch_decode(labels, skip_special_tokens=True)
+	# decode
+	preds_decoded = tokenizer.batch_decode(preds, skip_special_tokens=True)
+	labels_decoded = tokenizer.batch_decode(labels, skip_special_tokens=True)
 
-    # calculate rouge scores
-    # rouge_scores = calculate_rouge(labels_decoded, preds_decoded)
+	# calculate rouge scores
+	# rouge_scores = calculate_rouge(labels_decoded, preds_decoded)
 	scores = evaluate_summary(labels_decoded, preds_decoded)
 
-    # return metrics
-    return scores
+	# return metrics
+	return scores
 
 
 # In[9]:
