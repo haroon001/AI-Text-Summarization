@@ -1,9 +1,11 @@
 import nltk
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from rouge import Rouge
+import evaluate
 
 nltk.download('punkt')
 nltk.download('punkt_tab')
+meteor = evaluate.load("meteor")
 
 def calculate_rouge(reference, hypothesis):
     """
@@ -34,6 +36,23 @@ def calculate_bleu(reference, hypothesis):
     hypothesis_tokens = nltk.word_tokenize(hypothesis)
     sf = SmoothingFunction()
     return sentence_bleu(reference_tokens, hypothesis_tokens, smoothing_function=sf.method1)
+
+def calculate_meteor(decoded_preds, decoded_labels):
+    """
+    Calculate the METEOR score for a given predictions and labels.
+    
+    :param decoded_preds (list): Decoded predictions of model. 
+    :param decoded_labels (list): Decoded or original labels.
+    :return (float): The METEOR score
+    """
+    try:
+        meteor_result = meteor.compute(predictions=decoded_preds, references=decoded_labels)
+        
+    except Exception as e:
+        print(f"Warning: Error computing METEOR score: {str(e)}")
+        meteor_result = 0.0
+
+    return meteor_result
 
 def evaluate_summary(reference, hypothesis):
     """
