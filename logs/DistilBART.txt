@@ -1,0 +1,99 @@
+214293
+213892
+DatasetDict({
+    train: Dataset({
+        features: ['summary', 'title', 'text', '__index_level_0__'],
+        num_rows: 160419
+    })
+    test: Dataset({
+        features: ['summary', 'title', 'text', '__index_level_0__'],
+        num_rows: 26737
+    })
+    valid: Dataset({
+        features: ['summary', 'title', 'text', '__index_level_0__'],
+        num_rows: 26736
+    })
+})
+{'loss': 4.8847, 'grad_norm': 0.5078125, 'learning_rate': 0.004501396090945353, 'epoch': 0.1}
+{'loss': 4.2002, 'grad_norm': 0.34375, 'learning_rate': 0.004002792181890706, 'epoch': 0.2}
+{'loss': 4.1467, 'grad_norm': 0.6796875, 'learning_rate': 0.003504188272836059, 'epoch': 0.3}
+{'loss': 4.1783, 'grad_norm': 2.234375, 'learning_rate': 0.0030055843637814125, 'epoch': 0.4}
+{'loss': 4.1379, 'grad_norm': 0.59765625, 'learning_rate': 0.002506980454726765, 'epoch': 0.5}
+{'loss': 4.1362, 'grad_norm': 0.2177734375, 'learning_rate': 0.0020083765456721183, 'epoch': 0.6}
+{'loss': 4.1215, 'grad_norm': 0.1787109375, 'learning_rate': 0.0015097726366174711, 'epoch': 0.7}
+{'loss': 4.1035, 'grad_norm': 0.302734375, 'learning_rate': 0.001011168727562824, 'epoch': 0.8}
+{'loss': 4.1117, 'grad_norm': 0.4375, 'learning_rate': 0.0005125648185081771, 'epoch': 0.9}
+{'loss': 4.1157, 'grad_norm': 4.875, 'learning_rate': 1.3960909453530115e-05, 'epoch': 1.0}
+{'eval_loss': 4.40574312210083, 'eval_rouge-1': 0.23880596720873248, 'eval_rouge-2': 0.02298850353811621, 'eval_rouge-l': 0.17910447467141904, 'eval_runtime': 4081.79, 'eval_samples_per_second': 6.55, 'eval_steps_per_second': 0.205, 'epoch': 1.0}
+{'train_runtime': 14571.1565, 'train_samples_per_second': 11.009, 'train_steps_per_second': 0.344, 'train_loss': 4.213970604292843, 'epoch': 1.0}
+TrainOutput(global_step=5014, training_loss=4.213970604292843, metrics={'train_runtime': 14571.1565, 'train_samples_per_second': 11.009, 'train_steps_per_second': 0.344, 'total_flos': 4.96623466708992e+16, 'train_loss': 4.213970604292843, 'epoch': 1.0})
+{'eval_loss': 4.381731986999512, 'eval_rouge-1': 0.25641025214990143, 'eval_rouge-2': 0.0, 'eval_rouge-l': 0.2051282008678502, 'eval_runtime': 4083.9323, 'eval_samples_per_second': 6.547, 'eval_steps_per_second': 0.205, 'epoch': 1.0}
+214293
+213892
+DatasetDict({
+    train: Dataset({
+        features: ['summary', 'title', 'text', '__index_level_0__'],
+        num_rows: 160419
+    })
+    test: Dataset({
+        features: ['summary', 'title', 'text', '__index_level_0__'],
+        num_rows: 26737
+    })
+    valid: Dataset({
+        features: ['summary', 'title', 'text', '__index_level_0__'],
+        num_rows: 26736
+    })
+})
+{'loss': 5.0054, 'grad_norm': 0.59765625, 'learning_rate': 0.004833798696981784, 'epoch': 0.1}
+{'loss': 4.2258, 'grad_norm': 1.0390625, 'learning_rate': 0.004667597393963568, 'epoch': 0.2}
+{'loss': 4.1676, 'grad_norm': 0.73828125, 'learning_rate': 0.004501396090945353, 'epoch': 0.3}
+{'loss': 4.1906, 'grad_norm': 2.703125, 'learning_rate': 0.004335194787927137, 'epoch': 0.4}
+{'loss': 4.153, 'grad_norm': 0.55078125, 'learning_rate': 0.004168993484908921, 'epoch': 0.5}
+{'loss': 4.148, 'grad_norm': 0.220703125, 'learning_rate': 0.004002792181890706, 'epoch': 0.6}
+{'loss': 4.1361, 'grad_norm': 0.49609375, 'learning_rate': 0.003836590878872491, 'epoch': 0.7}
+{'loss': 4.1195, 'grad_norm': 0.55078125, 'learning_rate': 0.003670389575854275, 'epoch': 0.8}
+{'loss': 4.1284, 'grad_norm': 0.5546875, 'learning_rate': 0.003504188272836059, 'epoch': 0.9}
+{'loss': 4.1329, 'grad_norm': 0.734375, 'learning_rate': 0.0033379869698178435, 'epoch': 1.0}
+{'eval_loss': 4.501331806182861, 'eval_rouge-1': 0.21874999758300778, 'eval_rouge-2': 0.02352940987128043, 'eval_rouge-l': 0.1874999975830078, 'eval_runtime': 3880.2434, 'eval_samples_per_second': 6.89, 'eval_steps_per_second': 0.215, 'epoch': 1.0}
+{'loss': 4.1344, 'grad_norm': 0.41015625, 'learning_rate': 0.0031717856667996275, 'epoch': 1.1}
+{'loss': 4.1514, 'grad_norm': 0.83203125, 'learning_rate': 0.0030055843637814125, 'epoch': 1.2}
+{'loss': 4.1272, 'grad_norm': 0.88671875, 'learning_rate': 0.0028393830607631966, 'epoch': 1.3}
+{'loss': 4.1064, 'grad_norm': 0.380859375, 'learning_rate': 0.0026731817577449806, 'epoch': 1.4}
+{'loss': 4.0985, 'grad_norm': 0.58984375, 'learning_rate': 0.002506980454726765, 'epoch': 1.5}
+{'loss': 4.1393, 'grad_norm': 0.34765625, 'learning_rate': 0.0023407791517085492, 'epoch': 1.6}
+{'loss': 4.1354, 'grad_norm': 1.0390625, 'learning_rate': 0.0021745778486903337, 'epoch': 1.7}
+{'loss': 4.1275, 'grad_norm': 0.6953125, 'learning_rate': 0.0020083765456721183, 'epoch': 1.79}
+{'loss': 4.1216, 'grad_norm': 0.5234375, 'learning_rate': 0.0018421752426539023, 'epoch': 1.89}
+{'loss': 4.1291, 'grad_norm': 0.453125, 'learning_rate': 0.0016759739396356868, 'epoch': 1.99}
+{'eval_loss': 4.4876790046691895, 'eval_rouge-1': 0.36111110750385805, 'eval_rouge-2': 0.0, 'eval_rouge-l': 0.27777777417052474, 'eval_runtime': 5311.1878, 'eval_samples_per_second': 5.034, 'eval_steps_per_second': 0.157, 'epoch': 2.0}
+{'loss': 4.1258, 'grad_norm': 0.392578125, 'learning_rate': 0.0015097726366174711, 'epoch': 2.09}
+{'loss': 4.1119, 'grad_norm': 0.4609375, 'learning_rate': 0.0013435713335992556, 'epoch': 2.19}
+{'loss': 4.112, 'grad_norm': 0.5234375, 'learning_rate': 0.0011773700305810397, 'epoch': 2.29}
+{'loss': 4.1049, 'grad_norm': 0.61328125, 'learning_rate': 0.001011168727562824, 'epoch': 2.39}
+{'loss': 4.1289, 'grad_norm': 0.251953125, 'learning_rate': 0.0008449674245446084, 'epoch': 2.49}
+{'loss': 4.1226, 'grad_norm': 0.36328125, 'learning_rate': 0.0006787661215263928, 'epoch': 2.59}
+{'loss': 4.0864, 'grad_norm': 0.1328125, 'learning_rate': 0.0005125648185081771, 'epoch': 2.69}
+{'loss': 4.1359, 'grad_norm': 1.203125, 'learning_rate': 0.00034636351548996146, 'epoch': 2.79}
+{'loss': 4.1034, 'grad_norm': 0.275390625, 'learning_rate': 0.00018016221247174578, 'epoch': 2.89}
+{'loss': 4.1396, 'grad_norm': 0.2353515625, 'learning_rate': 1.3960909453530115e-05, 'epoch': 2.99}
+{'eval_loss': 4.444862365722656, 'eval_rouge-1': 0.33333332972608026, 'eval_rouge-2': 0.0, 'eval_rouge-l': 0.24999999639274692, 'eval_runtime': 5300.0233, 'eval_samples_per_second': 5.045, 'eval_steps_per_second': 0.158, 'epoch': 3.0}
+{'train_runtime': 45899.8242, 'train_samples_per_second': 10.485, 'train_steps_per_second': 0.328, 'train_loss': 4.161418800673544, 'epoch': 3.0}
+TrainOutput(global_step=15042, training_loss=4.161418800673544, metrics={'train_runtime': 45899.8242, 'train_samples_per_second': 10.485, 'train_steps_per_second': 0.328, 'total_flos': 1.489870400126976e+17, 'train_loss': 4.161418800673544, 'epoch': 3.0})
+{'eval_loss': 4.421535015106201, 'eval_rouge-1': 0.31818181344008273, 'eval_rouge-2': 0.0, 'eval_rouge-l': 0.1818181770764464, 'eval_runtime': 5296.583, 'eval_samples_per_second': 5.048, 'eval_steps_per_second': 0.158, 'epoch': 3.0}
+214293
+213892
+DatasetDict({
+    train: Dataset({
+        features: ['summary', 'title', 'text', '__index_level_0__'],
+        num_rows: 160419
+    })
+    test: Dataset({
+        features: ['summary', 'title', 'text', '__index_level_0__'],
+        num_rows: 26737
+    })
+    valid: Dataset({
+        features: ['summary', 'title', 'text', '__index_level_0__'],
+        num_rows: 26736
+    })
+})
+{'eval_loss': 4.330147743225098, 'eval_model_preparation_time': 0.0035, 'eval_rouge': {'rouge-1': 0.33333332958333334, 'rouge-2': 0.0, 'rouge-l': 0.22222221847222226}, 'eval_meteor': {'meteor': 0.06638596378694887}, 'eval_runtime': 3894.1552, 'eval_samples_per_second': 6.866, 'eval_steps_per_second': 0.215}
