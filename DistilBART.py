@@ -259,8 +259,8 @@ trainer = Seq2SeqTrainer(
 Train model.
 """
 os.environ["WANDB_DISABLED"] = "true"
-# training_results = trainer.train()
-# print(training_results)
+training_results = trainer.train()
+print(training_results)
 
 # In[ ]:
 
@@ -268,8 +268,8 @@ os.environ["WANDB_DISABLED"] = "true"
 """
 Evaluate model.
 """
-# testing_results = trainer.evaluate(tokenized_datasets['test'])
-# print(testing_results)
+testing_results = trainer.evaluate(tokenized_datasets['test'])
+print(testing_results)
 
 # In[ ]:
 
@@ -277,7 +277,7 @@ Evaluate model.
 """
 Save trained model.
 """
-# trainer.save_model(output_path)
+trainer.save_model(output_path)
 
 
 """
