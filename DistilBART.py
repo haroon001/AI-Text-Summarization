@@ -290,27 +290,33 @@ texts = [
 	"It can be hard to tell if someone is interested, but you should be able to tell if he makes an effort to spend time with you. If he initiates conversation and smiles a lot, then there's a good chance that he is interested. That said: many guys get shy when they like someone, and you shouldn't write someone off just because he hasn't made a move.This can be anything from a trip to the beach to a house party. Some guys like to make the first move, but most will respect a girl who goes for wha.",
 ]
 
-model.to('cuda')
-for text in texts:
-	inputs = tokenizer(
-		text,
-		max_length=max_target_length,
-		truncation=True,
-		return_tensors="pt",
-	).input_ids.cuda()
-	
-	outputs = model.generate(
-		inputs,
-		max_length=128,
-		# max_new_tokens=128,
-		# do_sample=False,
-		# no_repeat_ngram_size=2,
-		num_beams=4,
-		early_stopping=True,
-	)
-	decoded = tokenizer.decode(outputs[0], skip_special_tokens=True)
+# model.to('cuda')
+model.eval()
 
-	print(text)
-	print(decoded)
-	print()
+selected_indices = range(10)
 
+with torch.no_grad():
+	for idx in selected_indices:
+		sample = test_dataset[idx]
+		
+		inputs = tokenizer(
+			f"summarize: {text}",
+			max_length=512,
+			truncation=True,
+			return_tensors="pt",
+		).to('cuda')
+		
+		outputs = model.generate(
+			inputs.input_ids,
+			max_length=128,
+			# max_new_tokens=128,
+			# do_sample=False,
+			# no_repeat_ngram_size=2,
+			num_beams=4,
+			early_stopping=True,
+		)
+		decoded = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+		print(text)
+		print(decoded)
+		print()
