@@ -268,8 +268,8 @@ os.environ["WANDB_DISABLED"] = "true"
 """
 Evaluate model.
 """
-testing_results = trainer.evaluate(tokenized_datasets['test'])
-print(testing_results)
+# testing_results = trainer.evaluate(tokenized_datasets['test'])
+# print(testing_results)
 
 # In[ ]:
 
@@ -277,5 +277,40 @@ print(testing_results)
 """
 Save trained model.
 """
-trainer.save_model(output_path)
+# trainer.save_model(output_path)
+
+
+"""
+Manually generate summaries.
+"""
+texts = [
+	"Caged animals such as hamsters, guinea pigs, rodent, reptiles, and amphibians can be taken to a friend's or sitter's home. Create a document that outlines the feeding and water needs, cleaning schedule, and temperature control. Pack all of the things that mimic your pet's environment at your home such as bedding, heated surfaces, and decorations.If the cage is not mobile, someone will need to come check on your pet daily.A rabbit, ferret, or guinea pig is live bait in the wild. Relocating your",
+	"Every boarding barn has people who go on vacation, or people who'd love to take a break from mucking stalls every day. Or even just riding all the time. Set up a rate schedule, depending on how much care you are willing to do. Not only will you get a little bit of income, but you'll learn a lot about horse-ownership along the way.;, Offer to pull manes, braid, polish hooves, etc. If you're boarding your horse in a show barn, you can probably find customers fairly easily. Braiding, especially, c",
+	"Let him know that you like him by making an effort to look nice whenever you're around him. You should still be yourself, but take extra care with your hair and makeup and outfits, so he can start to notice you. You don't have to wear a tight dress and high heels if you're at a baseball game with him, but let him know that you care about your looks when you're around him.. Don't be afraid to be a little sexy. If you're comfortable with your body, show it off. If you're not comfortable with a l.",
+	"It can be hard to tell if someone is interested, but you should be able to tell if he makes an effort to spend time with you. If he initiates conversation and smiles a lot, then there's a good chance that he is interested. That said: many guys get shy when they like someone, and you shouldn't write someone off just because he hasn't made a move.This can be anything from a trip to the beach to a house party. Some guys like to make the first move, but most will respect a girl who goes for wha.",
+]
+
+model.to('cuda')
+for text in texts:
+	inputs = tokenizer(
+		text,
+		max_length=max_target_length,
+		truncation=True,
+		return_tensors="pt",
+	).input_ids.cuda()
+	
+	outputs = model.generate(
+		inputs,
+		max_length=128,
+		# max_new_tokens=128,
+		# do_sample=False,
+		# no_repeat_ngram_size=2,
+		num_beams=4,
+		early_stopping=True,
+	)
+	decoded = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+	print(text)
+	print(decoded)
+	print()
 
